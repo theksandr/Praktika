@@ -54,11 +54,10 @@ public abstract class Dog
 
     @Override
     public String toString() {
-        return "Dog{" +
-                "name = '" + name + '\'' +
-                ", colour = '" + colour + '\'' +
-                ", height = " + height +
-                ", hair = " + hair +
-                ", age = " + age;
+        return "name " + this.name +
+                ", colour " + this.colour +
+                ", height " + this.height +
+                ", hair " + this.hair +
+                ", age " + this.age;
     }
 }

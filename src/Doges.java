@@ -7,7 +7,7 @@ public class Doges extends Dog {
         hair = ha;
     }
 
-    public class Doge extends Dog {
+    public static class Doge extends Dog {
         Doge() {
             name = "Doge";
             age = 7;
@@ -17,7 +17,7 @@ public class Doges extends Dog {
         }
     }
 
-    public class Cheems extends Dog {
+    public static class Cheems extends Dog {
         Cheems() {
             name = "Cheems";
             age = 4;
@@ -27,7 +27,7 @@ public class Doges extends Dog {
         }
     }
 
-    public class Walter extends Dog {
+    public static class Walter extends Dog {
         Walter() {
             name = "Walter";
             age = 9;
