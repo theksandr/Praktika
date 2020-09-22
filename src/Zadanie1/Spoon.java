@@ -1,3 +1,5 @@
+package Zadanie1;
+
 public class Spoon extends Dish
 {
     protected int volume;

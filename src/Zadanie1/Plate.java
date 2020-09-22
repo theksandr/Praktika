@@ -1,3 +1,5 @@
+package Zadanie1;
+
 public class Plate extends Dish
 {
     protected int area;

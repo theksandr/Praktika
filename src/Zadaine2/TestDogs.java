@@ -1,4 +1,4 @@
-import java.sql.SQLOutput;
+package Zadaine2;
 
 public class TestDogs extends Dog {
     public static void main(String[] args)

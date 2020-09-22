@@ -1,3 +1,5 @@
+package Zadanie1;
+
 public class TestDish
 {
     public static void main(String[] args)

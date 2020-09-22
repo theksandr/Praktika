@@ -1,3 +1,5 @@
+package Zadanie1;
+
 public abstract class Dish
 {
     abstract void setProperty(int p);

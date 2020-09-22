@@ -1,3 +1,5 @@
+package Zadanie1;
+
 public class Fork extends Dish
 {
     protected int prongs;

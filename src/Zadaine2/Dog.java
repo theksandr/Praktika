@@ -1,3 +1,5 @@
+package Zadaine2;
+
 public abstract class Dog
 {
     String name, colour;
