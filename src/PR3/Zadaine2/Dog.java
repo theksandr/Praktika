@@ -1,4 +1,4 @@
-package Zadaine2;
+package PR3.Zadaine2;
 
 public abstract class Dog
 {

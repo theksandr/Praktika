@@ -1,4 +1,4 @@
-package Zadaine2;
+package PR3.Zadaine2;
 
 public class TestDogs extends Dog {
     public static void main(String[] args)

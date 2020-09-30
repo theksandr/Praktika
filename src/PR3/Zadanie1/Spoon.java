@@ -1,4 +1,4 @@
-package Zadanie1;
+package PR3.Zadanie1;
 
 public class Spoon extends Dish
 {

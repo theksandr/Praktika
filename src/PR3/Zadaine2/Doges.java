@@ -1,4 +1,4 @@
-package Zadaine2;
+package PR3.Zadaine2;
 
 public class Doges extends Dog {
     Doges(String n, int a, int he, String c, int ha) {

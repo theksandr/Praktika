@@ -1,4 +1,4 @@
-package Zadanie4;
+package PR3.Zadanie4;
 
 public abstract class Shape
 {
