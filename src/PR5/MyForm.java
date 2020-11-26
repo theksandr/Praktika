@@ -91,7 +91,7 @@ public class MyForm extends JFrame{
                     JOptionPane.showMessageDialog(MyForm.this, "Team " + team2.getName() + " won!");
                 }
                 else {
-                    JOptionPane.showMessageDialog(MyForm.this, "Draw");
+                    JOptionPane.showMessageDialog(MyForm.this, "DEAD HEAT");
                 }
                 team1.setScore(0);
                 team2.setScore(0);

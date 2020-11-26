@@ -2,57 +2,22 @@ package PR4;
 import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.Scanner;
 public class Company
 {
-    ArrayList<Employee> UnemployedList;
     ArrayList<Employee> EmployeeList;
-    public int income;
-    Scanner scanner = new Scanner(System.in);
+    public double income;
     Company()
     {
-        income=(5000000+(int)(Math.random()*15000000));
         EmployeeList = new ArrayList<Employee>();
-        UnemployedList = new ArrayList<Employee>();
     }
-    public void employ()
+
+    /*public void hireAll(List<Employee> list)
     {
-        String[] slog = new String[] {"kim", "chan", "sen", "jao", "pin", "zin", "lao", "van", "hu", "mao", "tze", "dun", "dju", "lei", "minj", "zen","tao","xin","chao","ning","fen"};
-        for (int i=0;i<=180;i++)
-        {
-            String name = slog[(int)(20*Math.random())]+slog[(int)(20*Math.random())];
-            String surname = slog[(int)(20*Math.random())]+slog[(int)(20*Math.random())];
-            /*System.out.println(name+" "+surname);*/
-            Operator operatornew = new Operator(name, surname, "Operator");
-            UnemployedList.add(operatornew);
-        }
-        for (int i=0;i<=80;i++)
-        {
-            String name = slog[(int)(20*Math.random())]+slog[(int)(20*Math.random())];
-            String surname = slog[(int)(20*Math.random())]+slog[(int)(20*Math.random())];
-            /*System.out.println(name+" "+surname);*/
-            Manager managernew = new Manager(name, surname, "Manager");
-            managernew.salary+=0.05*((115000+Math.random()*25000));
-            UnemployedList.add(managernew);
-        }
-        for (int i=0;i<=10;i++)
-        {
-            String name = slog[(int)(20*Math.random())]+slog[(int)(20*Math.random())];
-            String surname = slog[(int)(20*Math.random())]+slog[(int)(20*Math.random())];
-            /*System.out.println(name+" "+surname);*/
-            TopManager topmanagernew = new TopManager(name, surname, "Top Manager");
-            if (income>10000000) topmanagernew.salary+=1.5* topmanagernew.baseSalary;
-            UnemployedList.add(topmanagernew);
-        }
-    }
-
-    public void hireAll()
-    {
-        EmployeeList.addAll(UnemployedList);
-    }
+        EmployeeList.addAll(list);
+    }*/
 
 
-    public void hire()
+   /* public void hire()
     {
         int cmd;
         System.out.println("Who do you want to hire?\n1.Operator\n2.Manager\n3.Top Manager");
@@ -89,23 +54,31 @@ public class Company
             if (income>10000000) topmanagernew.salary+=1.5* topmanagernew.baseSalary;
             EmployeeList.add(topmanagernew);
         }
+    }*/
+
+    public void hire(Employee employee) {
+        if (EmployeeList == null) {
+            EmployeeList = new ArrayList<Employee>();
+        }
+        EmployeeList.add(employee);
+    }
+    public void hireAll(ArrayList<Employee> employee) {
+        if (EmployeeList == null) {
+            EmployeeList = new ArrayList<Employee>();
+        }
+        EmployeeList.addAll(employee);
     }
 
-    public void fire()
+    public void fire(int i)
     {
-        int cmd;
-        String nam, sur;
-        System.out.println("Who do you want to fire?");
-        System.out.println("Type in an employee you want to fire.");
-        nam = scanner.nextLine();
-        sur = scanner.nextLine();
-        EmployeeList.forEach(obj -> {if(obj.comparator(nam, sur)) EmployeeList.remove(obj);} );
+        //EmployeeList.forEach(obj -> {if(obj.comparator(nam, sur)) EmployeeList.remove(obj);} );
+        EmployeeList.remove(i);
     }
 
-    List<Employee> getTopSalaryStaff(int count)
+   /* List<Employee> getTopSalaryStaff(int count)
     {
         List<Employee>TopSalaryList=null;
-        if(count>EmployeeList.size()) System.out.println("Count is too big.");
+        if(count>EmployeeList.size()) count=EmployeeList.size();
         else if(count<0) System.out.println("Count can't be negative");
         else {
             Collections.sort(EmployeeList, Employee.COMPARE_BY_SALARY);
@@ -117,29 +90,95 @@ public class Company
     List<Employee> getLowestSalaryStaff(int count)
     {
         List<Employee>LowestSalaryList=null;
-        if(count>EmployeeList.size()) System.out.println("Count is too big.");
+        if(count>EmployeeList.size()) count=EmployeeList.size();
         else if(count<0) System.out.println("Count can't be negative");
         else {
             Collections.sort(EmployeeList, Collections.reverseOrder(Employee.COMPARE_BY_SALARY));
             LowestSalaryList=EmployeeList.subList(0, count);
         }
         return LowestSalaryList;
-    }
+    }*/
 
-    public void printSalaryStaff(List<Employee> list) {
+    /*public void printSalaryStaff(List<Employee> list) {
         for(int i = 0; i < list.size(); i++) {
         System.out.println(list.get(i).getSalary());
     }
-}
-    public void fire50() {
-        for (int i = 0; i < EmployeeList.size(); i += 2) {
-            EmployeeList.remove(i);
+}*/
+    List<Employee> getTopSalaryStaff(int count) {
+        ArrayList<Employee> highList= new ArrayList<Employee>();
+        if (count < 0) {
+            System.out.println("Count can't be negative");
+            return highList;
         }
+        Comparator<Employee> comparator = new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                if (o1.position.getSalary() < o2.position.getSalary()) {
+                    return 1;
+                }
+                else if (o1.position.getSalary() > o2.position.getSalary()) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        };
+        EmployeeList.sort(comparator);
+        for (int i = 0; i < count; i++) {
+            highList.add(EmployeeList.get(i));
+        }
+        return highList;
     }
-    public int getIncome() {
+
+    List<Employee> getLowestSalaryStaff(int count) {
+
+        ArrayList<Employee> lowList = new ArrayList<Employee>();
+        if (count < 0) {
+            System.out.println("Count can't be negative");
+            return lowList;
+        }
+        Comparator<Employee> comparator = new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                if (o1.position.getSalary() < o2.position.getSalary()) {
+                    return 1;
+                }
+                else if (o1.position.getSalary() > o2.position.getSalary()) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        };
+        EmployeeList.sort(comparator);
+        Collections.reverse(EmployeeList);
+        for (int i = 0; i < count; i++) {
+            lowList.add(EmployeeList.get(i));
+        }
+        return lowList;
+    }
+    public List<Employee> getEmployeeList() {
+        return EmployeeList;
+    }
+
+    public double getIncome() {
         return income;
     }
-    public void calcAll(){
-        EmployeeList.forEach(obj -> obj.calcSalary(obj.baseSalary) );
+
+    public double calcIncome() {
+        income = 0;
+        for (Employee employee : EmployeeList) {
+            if (employee.position.getJobTitle().equals("Manager")) {
+                income += employee.position.getCompanyIncome();
+            }
+        }
+        return income;
+    }
+
+    public void calcAll(double baseSalary) {
+
+        for (Employee employee : EmployeeList) {
+            employee.position.calcSalary(baseSalary);
+        }
     }
 }

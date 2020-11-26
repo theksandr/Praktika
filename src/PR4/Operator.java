@@ -1,18 +1,34 @@
 package PR4;
 
-public class Operator extends Employee implements EmployeePosition
+public class Operator implements EmployeePosition
 {
-    Operator(String n, String su, String j)
+    private double salary;
+    /*Operator(String n, String su, String j)
     {
         name=n;
         surname=su;
         job="Operator";
         baseSalary=30000;
+    }*/
+
+    public double getSalary() {
+        return salary;
+    }
+
+    @Override
+    public double getCompanyIncome() {
+        return 0;
+    }
+
+    @Override
+    public String getJobTitle() {
+        return "Operator";
     }
 
     @Override
     public double calcSalary(double baseSalary) {
-        this.salary=baseSalary+(Math.random()*30000);
-        return salary;
+        return salary = Math.random()*baseSalary;
     }
+
 }
+

@@ -33,6 +33,16 @@ public class Square extends Rectangle
     }
 
     @Override
+    protected double getWidth() {
+        return this.side;
+    }
+
+    @Override
+    protected double getLength() {
+        return this.side;
+    }
+
+    @Override
     public String toString() {
         return "side " + this.side +
                 ", area " + this.getArea() +

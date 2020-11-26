@@ -1,27 +1,19 @@
 package PR4;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 
-public class Employee implements EmployeePosition, Comparable
-{
-    public String name, surname, job;
-    public double salary, baseSalary;
-    Employee(){
+public class Employee {
+    protected String name, surname;
+    /*public double salary, baseSalary;*/
+    protected EmployeePosition position;
 
-    }
-
-    Employee(String n, String su, String j, double bsa)
+    Employee(String n, String su, EmployeePosition pos)
     {
         name=n;
         surname=su;
-        job=j;
-        baseSalary=bsa;
+        position=pos;
     }
 
-    public boolean comparator(String nam, String sur)
+   /* public boolean comparator(String nam, String sur)
     {
         if(nam.equals(this.name)&&sur.equals(this.surname))
             return true;
@@ -48,10 +40,10 @@ public class Employee implements EmployeePosition, Comparable
         public int compare(Employee lhs, Employee rhs){
             return (int)lhs.getSalary() - (int)rhs.getSalary();
         }
-    };
+    };*/
 
     @Override
     public String toString() {
-        return  name +" "+ surname +" " + job+" " + baseSalary+" " + salary;
+        return  name +" "+ surname ;
     }
 }
